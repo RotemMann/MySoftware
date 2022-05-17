@@ -1,10 +1,16 @@
+properties([pipelineTriggers([cron('* * * * *')])])
 pipeline {
+    
     agent any
 
     stages {
-        stage('Hello') {
+        stage('stage1') {
             steps {
-                echo 'Hello World'
+                bat '''
+                     dir
+                     python py1b.py
+                     python py1s.py
+                    ''' 
             }
         }
     }
